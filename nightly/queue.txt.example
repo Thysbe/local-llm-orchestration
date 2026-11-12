@@ -1,0 +1,3 @@
+# Rounds to run, top first. Each name N needs a brief TASK<N>.md next to nightly.sh (or already in the repo).
+8a
+8b

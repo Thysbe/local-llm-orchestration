@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Runs nightly.sh at 00:00. Replace /PATH/TO/nightly with the folder holding nightly.sh, and make PATH
+  include wherever `claude`, `python3` and `node` live. Install:
+    cp com.example.local-llm-nightly.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.example.local-llm-nightly.plist
+  Uninstall:
+    launchctl bootout gui/$(id -u)/com.example.local-llm-nightly && rm ~/Library/LaunchAgents/com.example.local-llm-nightly.plist
+  The Mac must be awake at midnight, on AC power (System Settings > Battery > prevent sleep on power adapter).
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.example.local-llm-nightly</string>
+  <key>ProgramArguments</key>
+  <array><string>/bin/bash</string><string>/PATH/TO/nightly/nightly.sh</string></array>
+  <key>StartCalendarInterval</key><dict><key>Hour</key><integer>0</integer><key>Minute</key><integer>0</integer></dict>
+  <key>EnvironmentVariables</key>
+  <dict><key>PATH</key><string>/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string></dict>
+  <key>StandardOutPath</key><string>/PATH/TO/nightly/logs/launchd.log</string>
+  <key>StandardErrorPath</key><string>/PATH/TO/nightly/logs/launchd.log</string>
+</dict>
+</plist>

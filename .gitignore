@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+*.pyc
+nightly/nightly.conf
+nightly/queue.txt
+nightly/last_round
+nightly/STOP
+nightly/logs/
+nightly/TASK*.md

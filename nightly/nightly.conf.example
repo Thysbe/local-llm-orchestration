@@ -1,0 +1,9 @@
+# Copy to nightly.conf and edit.
+REPO="$HOME/Dev/my-project"                                                  # repo the model works in
+RUN_LOCAL="$HOME/.claude/skills/local-model-orchestration/scripts/run_local.sh"
+MODEL="qwen3.8:27b"
+TEST_CMD="python3 -m unittest discover tests"                                # must pass between rounds
+END_HOUR=7                                                                   # don't start a round that won't finish by then
+TRIES=2                                                                      # local fix-up attempts when tests fail
+# EXTRA_TOOLS="Bash(node:*);Bash(npm:*)"                                     # extra commands the model may run
+# READ_DENY="data/huge.json;secrets/**"                                      # paths the model may never read
